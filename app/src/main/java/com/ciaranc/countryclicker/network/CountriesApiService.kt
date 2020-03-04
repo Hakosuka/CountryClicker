@@ -6,7 +6,7 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.Deferred
 import retrofit2.Call
 import retrofit2.Retrofit
-import retrofit2.converter.scalars.ScalarsConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Headers
@@ -14,20 +14,21 @@ import retrofit2.http.Query
 
 private const val BASE_URL = "https://restcountries-v1.p.rapidapi.com/"
 
+private val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+
 private val retrofit = Retrofit.Builder()
-    .addConverterFactory(ScalarsConverterFactory.create()) //get something to support primitive types
+    .addConverterFactory(MoshiConverterFactory.create(moshi)) //get something to support primitive types
     .baseUrl(BASE_URL)
     .build()
 
 interface CountriesApiService {
-    //TODO: figure out API keys
-    //TODO: ask if I need to hide the API key
     @GET("all")
     @Headers("x-rapidapi-host: restcountries-v1.p.rapidapi.com",
-        "x-rapidapi-key: ")
+        "x-rapidapi-key: 2a9c1579fcmshd29e294f7a414e4p19de28jsn8bb320718b98")
     fun getCountries():
             //TODO: implement Deferred
-            Call<String>
+            Call<List<Country>>
+    //Call<String>
 }
 
 /**
