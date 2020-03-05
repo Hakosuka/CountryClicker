@@ -18,6 +18,7 @@ private val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
 
 private val retrofit = Retrofit.Builder()
     .addConverterFactory(MoshiConverterFactory.create(moshi)) //get something to support primitive types
+    .addCallAdapterFactory(CoroutineCallAdapterFactory())
     .baseUrl(BASE_URL)
     .build()
 
@@ -26,8 +27,7 @@ interface CountriesApiService {
     @Headers("x-rapidapi-host: restcountries-v1.p.rapidapi.com",
         "x-rapidapi-key: 2a9c1579fcmshd29e294f7a414e4p19de28jsn8bb320718b98")
     fun getCountries():
-            //TODO: implement Deferred
-            Call<List<Country>>
+            Deferred<List<Country>>
     //Call<String>
 }
 

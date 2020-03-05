@@ -7,12 +7,16 @@ import androidx.lifecycle.ViewModel
 import com.ciaranc.countryclicker.network.CountriesApiService
 import com.ciaranc.countryclicker.network.Country
 import com.ciaranc.countryclicker.network.CountryApi
+import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.lang.Exception
 
 class CountriesViewModel : ViewModel() {
     private val TAG = "CountriesViewModel"
+    private var viewModelJob = Job()
+    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
     // TODO: Implement the ViewModel
     private val _response = MutableLiveData<String>()
     val response: LiveData<String>
@@ -23,16 +27,19 @@ class CountriesViewModel : ViewModel() {
     }
 
     private fun getListOfCountries(){
-        //TODO: Call the CountriesAPI to enqueue the Retrofit request and implement callbacks
-        CountryApi.retrofitService.getCountries().enqueue(object: Callback<List<Country>>{
-            override fun onResponse(call: Call<List<Country>>, response: Response<List<Country>>) {
-                _response.value = "${response.body()?.size} countries retrieved."
+        coroutineScope.launch {
+            var getCountriesDeferred = CountryApi.retrofitService.getCountries()
+            try {
+                var listResult = getCountriesDeferred.await()
+                _response.value = "${listResult.size} countries returned"
+            } catch (e: Exception) {
+                _response.value = "Failure: ${e.message}. Time to go trawl StackOverflow."
             }
+        }
+    }
 
-            override fun onFailure(call: Call<List<Country>>, t: Throwable) {
-                Log.d(TAG, t.message)
-                _response.value = "Mission failed, we'll get 'em next time. " + t.message
-            }
-        })
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
     }
 }
