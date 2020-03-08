@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+android:padding="6dp">
     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:text="@string/app_name"/>
-</layout>
+        android:id="@+id/country_name"
+        android:text="Country"/>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:id="@+id/country_capital"
+        android:text="Capital"
+        android:layout_below="@id/country_name"
+        android:layout_alignParentStart="true"/>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:id="@+id/region_name"
+        android:text="Region"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/country_name"/>
+</RelativeLayout>
