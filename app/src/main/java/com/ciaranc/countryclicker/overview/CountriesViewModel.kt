@@ -51,4 +51,16 @@ class CountriesViewModel : ViewModel() {
         super.onCleared()
         viewModelJob.cancel()
     }
+
+    /**
+     * Navigation code for the ViewModel.
+     * @param selectedCountry: The Country corresponding to the RecyclerView item the user clicked
+     */
+    fun displayCountryDetails(selectedCountry: Country) {
+        _navToSelectedCountry.value = selectedCountry
+    }
+
+    fun displayCountryDetailsComplete() {
+        _navToSelectedCountry.value = null
+    }
 }

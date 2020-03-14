@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ciaranc.countryclicker.databinding.GridItemBinding
 import com.ciaranc.countryclicker.network.Country
 
-class CountryGridAdapter : ListAdapter<Country, CountryGridAdapter.CountryViewHolder>(DiffCallback){
+class CountryGridAdapter(val onClickListener: OnClickListener) :
+    ListAdapter<Country, CountryGridAdapter.CountryViewHolder>(DiffCallback){
     class CountryViewHolder(private var binding: GridItemBinding) :
             RecyclerView.ViewHolder(binding.root) {
         fun bind(country: Country) {
@@ -36,6 +37,9 @@ class CountryGridAdapter : ListAdapter<Country, CountryGridAdapter.CountryViewHo
     override fun onBindViewHolder(holder: CountryGridAdapter.CountryViewHolder, position: Int) {
         val country = getItem(position)
         holder.bind(country)
+        holder.itemView.setOnClickListener { onClickListener.onClick(country) }
     }
-
+    class OnClickListener(val clickListener: (country: Country) -> Unit){
+        fun onClick(country: Country) = clickListener(country)
+    }
 }

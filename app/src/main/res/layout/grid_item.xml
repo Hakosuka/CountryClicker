@@ -19,7 +19,7 @@
             tools:text="Country"/>
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:id="@+id/country_capital"
-            android:text="@{country.capital}"
+            android:text="@{@string/cap_lit(country.capital)}"
             tools:text="Capital" android:layout_below="@id/country_name"/>
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:id="@+id/region_name"
