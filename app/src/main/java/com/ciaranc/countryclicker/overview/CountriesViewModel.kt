@@ -17,10 +17,18 @@ class CountriesViewModel : ViewModel() {
     private val TAG = "CountriesViewModel"
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
-    // TODO: Implement the ViewModel
+    // TODO: Implement the ViewModels
     private val _response = MutableLiveData<String>()
     val response: LiveData<String>
         get() = _response
+
+    private val _countries = MutableLiveData<List<Country>>()
+    val countries: LiveData<List<Country>>
+        get() = _countries
+
+    private val _navToSelectedCountry = MutableLiveData<Country>()
+    val navToSelectedCountry: LiveData<Country>
+        get() = _navToSelectedCountry
 
     init {
         getListOfCountries()
@@ -32,6 +40,7 @@ class CountriesViewModel : ViewModel() {
             try {
                 var listResult = getCountriesDeferred.await()
                 _response.value = "${listResult.size} countries returned"
+                _countries.value = listResult
             } catch (e: Exception) {
                 _response.value = "Failure: ${e.message}. Time to go trawl StackOverflow."
             }

@@ -1,21 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="wrap_content"
     android:layout_width="wrap_content"
-android:padding="6dp">
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:id="@+id/country_name"
-        android:text="Country"/>
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:id="@+id/country_capital"
-        android:text="Capital"
-        android:layout_below="@id/country_name"
-        android:layout_alignParentStart="true"/>
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:id="@+id/region_name"
-        android:text="Region"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/country_name"/>
-</RelativeLayout>
+    android:padding="6dp"
+    android:layout_margin="6dp">
+    <data>
+        <variable
+            name="country"
+            type="com.ciaranc.countryclicker.network.Country"/>
+    </data>
+    <RelativeLayout>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:id="@+id/country_name"
+            android:text="@{country.name}"
+            tools:text="Country"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:id="@+id/country_capital"
+            android:text="@{country.capital}"
+            tools:text="Capital" android:layout_below="@id/country_name"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:id="@+id/region_name"
+            android:text="@{country.region}"
+            tools:text="Region" android:layout_below="@id/country_capital" android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+</layout>

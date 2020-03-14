@@ -25,8 +25,10 @@ class CountriesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
         val binding = CountriesFragmentBinding.inflate(inflater)
-        binding.setLifecycleOwner(this)
+        binding.lifecycleOwner = this
         binding.viewModel = viewModel
+        binding.countriesGrid.adapter = CountryGridAdapter()
+        //TODO onClick navigation
         setHasOptionsMenu(true)
         return binding.root
     }
