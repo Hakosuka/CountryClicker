@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">CountryClicker</string>
+    <string name="name_lit">Name: %s</string>
+    <string name="cap_lit">Capital: %s</string>
+    <string name="alt_spellings_lit">Alternative spellings: %s</string>
+    <string name="rel_lit">Relevance: %s</string>
+    <string name="region_lit">Region: %s</string>
+    <string name="subreg_lit">Subregion: %s</string>
+    <string name="trans_lit">Translations: %s</string>
+    <string name="pop_lit">Population: %s</string>
+    <string name="location_lit">Coordinates: %s</string>
+    <string name="dem_lit">Demonym: %s</string>
+    <string name="area_lit">Area: %s km^2</string>
+    <string name="gini_lit">Gini coefficient: %s</string>
+    <string name="timezones_lit">Timezones: %s</string>
+    <string name="call_codes_lit">Calling codes: %s</string>
+    <string name="tld_lit">Top level domain: %s</string>
+    <string name="alpha_abbr_lit">Alpha 2 code: %s, alpha 3 code: %s</string>
+    <string name="currency_lit">Currencies: %s</string>
+    <string name="languages_lit">Languages: %s</string>
+</resources>

@@ -1,14 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="viewModel" type="com.ciaranc.countryclicker.network.Country"/>
+    </data>
+    <ScrollView android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".detail.CountryDetailFragment">
-
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Hello"/>
-
-</FrameLayout>
+        tools:context=".CountryDetailFragment">
+        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:id="@+id/country_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="@{@string/name_lit(viewModel.name)}"
+                tools:text="Country"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:id="@+id/country_capital"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/country_name"
+                      android:text="@{@string/cap_lit(viewModel.capital)}"
+                      tools:text="Capital"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:id="@+id/country_reg"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/country_capital"
+                      android:text="@{viewModel.region}"
+                      tools:text="Region"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:id="@+id/country_subreg"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/country_reg"
+                      android:text="@{viewModel.subregion}"
+                      tools:text="Subregion"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:id="@+id/country_pop"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/country_subreg"
+                      android:text="@{Double.toString(viewModel.population)}"
+                      tools:text="1337"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:id="@+id/country_area"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/country_pop"
+                      android:text="@{Double.toString(viewModel.area)}"
+                      tools:text="1337km^2"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:id="@+id/country_gini"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/country_subreg"
+                        android:text="@{Double.toString(viewModel.gini)}"
+                        tools:text="0.1337"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:id="@+id/country_alpha2"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/country_gini"
+                      android:text="@{viewModel.alpha2Code}"
+                      tools:text="COU"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:id="@+id/country_alpha3"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/country_name"
+                      android:text="@{viewModel.alpha3Code}"
+                      tools:text="CO"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:id="@+id/country_dem"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/country_area"
+                      android:text="@{viewModel.demonym}"
+                      tools:text="1337"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

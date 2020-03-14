@@ -23,7 +23,7 @@
             tools:text="Capital" android:layout_below="@id/country_name"/>
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:id="@+id/region_name"
-            android:text="@{country.region}"
-            tools:text="Region" android:layout_below="@id/country_capital" android:layout_alignParentEnd="true"/>
+            android:text="@{@string/region_lit(country.region)}"
+            tools:text="Region" android:layout_below="@id/country_capital"/>
     </RelativeLayout>
 </layout>
