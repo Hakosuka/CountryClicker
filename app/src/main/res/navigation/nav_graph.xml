@@ -9,12 +9,17 @@
         android:name="com.ciaranc.countryclicker.overview.CountriesFragment"
         android:label="countries_fragment"
         tools:layout="@layout/countries_fragment">
-        <action android:id="@+id/action_showClickedCountry" app:destination="@id/countryDetail"/>
+        <action
+            android:id="@+id/action_showClickedCountry"
+            app:destination="@id/countryDetail"/>
     </fragment>
     <fragment android:id="@+id/countryDetail" android:name="com.ciaranc.countryclicker.detail.CountryDetailFragment"
               android:label="country_detail_fragment" tools:layout="@layout/country_detail_fragment">
         <argument
             android:name="selectedCountry"
             app:argType="com.ciaranc.countryclicker.network.Country"/>
+        <action
+            android:id="@+id/action_ReturnToCountriesList"
+            app:destination="@id/countriesFragment"/>
     </fragment>
 </navigation>

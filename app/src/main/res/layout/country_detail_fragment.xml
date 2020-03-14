@@ -12,7 +12,6 @@
         <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp">
-            <!--TODO:Formatting-->
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:id="@+id/country_name"
                 app:layout_constraintStart_toStartOf="parent"
@@ -29,50 +28,77 @@
                       android:id="@+id/country_reg"
                       app:layout_constraintStart_toStartOf="parent"
                       app:layout_constraintTop_toBottomOf="@+id/country_capital"
-                      android:text="@{viewModel.region}"
+                      android:text="@{@string/region_lit(viewModel.region)}"
                       tools:text="Region"/>
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                       android:id="@+id/country_subreg"
                       app:layout_constraintStart_toStartOf="parent"
                       app:layout_constraintTop_toBottomOf="@+id/country_reg"
-                      android:text="@{viewModel.subregion}"
+                      android:text="@{@string/subreg_lit(viewModel.subregion)}"
                       tools:text="Subregion"/>
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                       android:id="@+id/country_pop"
                       app:layout_constraintStart_toStartOf="parent"
                       app:layout_constraintTop_toBottomOf="@+id/country_subreg"
-                      android:text="@{Double.toString(viewModel.population)}"
+                      android:text="@{@string/pop_lit(Double.toString(viewModel.population))}"
                       tools:text="1337"/>
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                       android:id="@+id/country_area"
                       app:layout_constraintStart_toStartOf="parent"
                       app:layout_constraintTop_toBottomOf="@+id/country_pop"
-                      android:text="@{Double.toString(viewModel.area)}"
+                      android:text="@{@string/area_lit(Double.toString(viewModel.area))}"
                       tools:text="1337km^2"/>
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                         android:id="@+id/country_gini"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/country_subreg"
-                        android:text="@{Double.toString(viewModel.gini)}"
+                        app:layout_constraintTop_toBottomOf="@+id/country_area"
+                        android:text="@{@string/gini_lit(Double.toString(viewModel.gini))}"
                         tools:text="0.1337"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:id="@+id/country_currency"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/country_gini"
+            android:text="@{@string/currency_lit(viewModel.currencies)}"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:id="@+id/country_languages"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/country_currency"
+            android:text="@{@string/languages_lit(viewModel.languages)}"/>
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                       android:id="@+id/country_alpha2"
                       app:layout_constraintStart_toStartOf="parent"
-                      app:layout_constraintTop_toBottomOf="@+id/country_gini"
-                      android:text="@{viewModel.alpha2Code}"
+                      app:layout_constraintTop_toBottomOf="@+id/country_languages"
+                      android:text="@{@string/alpha2_lit(viewModel.alpha2Code)}"
                       tools:text="COU"/>
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                       android:id="@+id/country_alpha3"
                       app:layout_constraintStart_toStartOf="parent"
-                      app:layout_constraintTop_toBottomOf="@+id/country_name"
-                      android:text="@{viewModel.alpha3Code}"
+                      app:layout_constraintTop_toBottomOf="@+id/country_alpha2"
+                      android:text="@{@string/alpha3_lit(viewModel.alpha3Code)}"
                       tools:text="CO"/>
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                       android:id="@+id/country_dem"
                       app:layout_constraintStart_toStartOf="parent"
-                      app:layout_constraintTop_toBottomOf="@+id/country_area"
-                      android:text="@{viewModel.demonym}"
-                      tools:text="1337"/>
+                      app:layout_constraintTop_toBottomOf="@+id/country_alpha3"
+                      android:text="@{@string/dem_lit(viewModel.demonym)}"
+                      tools:text="Countryans"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:id="@+id/country_timezones"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toBottomOf="@+id/country_dem"
+                      android:text="@{@string/timezones_lit(viewModel.timezones)}"
+                      tools:text="+000GMT"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:id="@+id/country_tlDomain"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/country_timezones"
+                    android:text="@{@string/tld_lit(viewModel.topLevelDomain)}"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:id="@+id/country_call_codes"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/country_tlDomain"
+                    android:text="@{@string/call_codes_lit(viewModel.callingCodes)}"
+                    tools:text="+0000"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>
